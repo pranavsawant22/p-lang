@@ -2,11 +2,15 @@ import colorama
 import basic
 
 colorama.init()
-while (1):
+text = ''
+while text != 'exit':
     print(colorama.Fore.YELLOW, "", end='')
     text = input("basic > ")
-    result, error = basic.run('<stdin>', text)
-    if error is not None:
-        print(colorama.Fore.RED, error.as_string())
+    if text != 'exit':
+        result, error = basic.run('<stdin>', text)
+        if error is not None:
+            print(colorama.Fore.RED, error.as_string())
+        else:
+            print(colorama.Fore.YELLOW, result)
     else:
-        print(colorama.Fore.YELLOW, result)
+        break
